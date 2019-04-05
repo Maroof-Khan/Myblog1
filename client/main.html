@@ -5,10 +5,6 @@
 
     <link type="text/css" href="./quill/quill.snow.css" rel="stylesheet">
     <script src="./quill/quill.js" ></script>
-    <!-- <script src="./quill/image-resize.min.js"></script> -->
-
-
-    <!-- <script src="./quill/quill.min.js"></script> -->
     <title>myblog</title>
   </head>
 
@@ -79,10 +75,8 @@
                               ['link', 'image'],
                               ['clean']                                         
                             ];
-        // alert(`${host}/quill/image-resize.min.js`);
        $(document).ready(function(){
           $.getScript('http://127.0.0.1:3000/quill/image-resize.min.js',
-          // $.getScript(`${host}/quill/image-resize.min.js`,
             function(){
             var editor = new Quill('#form_editor' , {
                             modules: {
@@ -99,29 +93,6 @@
                           $(".ql-clipboard").remove();    
           });
       });
-
-        // import Quill from 'quill'
-        // const Clipboard = Quill.import('modules/clipboard')
-        // const Delta = Quill.import('delta')
-
-        // class PlainClipboard extends Clipboard {
-        //   onPaste (e) {
-        //     e.preventDefault()
-        //     const range = this.quill.getSelection()
-        //     const text = e.clipboardData.getData('text/plain')
-        //     const delta = new Delta()
-        //     .retain(range.index)
-        //     .delete(range.length)
-        //     .insert(text)
-        //     const index = text.length + range.index
-        //     const length = 0
-        //     this.quill.updateContents(delta, 'silent')
-        //     this.quill.setSelection(index, length, 'silent')
-        //     this.quill.scrollIntoView()
-        //   }
-        // }
-
-        // export default PlainClipboard
 
     },300);
   </script>
