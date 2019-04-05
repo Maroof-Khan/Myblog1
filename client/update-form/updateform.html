@@ -1,0 +1,69 @@
+<template name="updateform">
+
+  <head>
+      <link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      
+      <link type="text/css" href="./../quill/quill.snow.css" rel="stylesheet">
+      <script src="./../quill/quill.js" ></script>
+       <!-- <script src="./../quill/image-resize.min.js"></script> -->
+
+    <title>updateform</title>
+  </head>
+
+  {{#each update_form}}
+  <form class="form-register" id="form" >
+    <div class="form-group ">
+      <label class="control-label col-sm-12" for="email">Blog Name</label>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" name="blogName" id="blog_name" placeholder="Enter blog name" value="{{blog_name}}">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label class=" col-sm-12" for="blogtype">Blog Type</label>
+       <select name="blogtype"  id="blog_type" value="{{blog_type}}" class="col-sm-12" >
+          <option value="technology">Technology</option>
+          <option value="movie review">Movies Review</option>
+          <option value="book review">Books Review</option>
+          <option value="histry">Histry</option>
+          <option value="joks">Joks</option>
+       </select> 
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-12" for="email">Author Name</label>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" name="AuthorName" id="auther_name" value="{{blog_author_name}}" placeholder="Enter author name ">
+      </div>
+    </div>
+ 
+   <div class="form-group col-sm-12">
+      <label for="comment">Discription::</label>
+      <div id="update_editor" class="editorquill" style="height:300px;">
+      <p>{{{blog_description}}}</p>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="col-sm-12">
+       <input name="image" type="file" id="fileName" accept=".jpg,.jpeg,.png" placeholder="select image"/>
+       <p>Images type acceptable only jpg jpeg and png.</p>
+      </div>
+     </div>
+
+    <div class="form-group">
+      <div class="col-sm-12 ">
+        <div class="checkbox">
+          <label><input type="checkbox" id="checked_id" name="subscribe"> Mark as a admin choice</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-12">
+        <button  type="submit" id="bt" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+ {{/each}} 
+</template>

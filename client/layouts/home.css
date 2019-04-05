@@ -1,0 +1,12 @@
+.bname {
+    margin-left: 110px;
+    cursor: pointer;
+}
+.people_list{
+	border:1px solid black;
+	background-color: #f4f4f4;
+	color: black;
+}
+.crtbtn{
+	margin-left: 270px;
+}
