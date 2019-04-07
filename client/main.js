@@ -26,8 +26,8 @@ Template.blogform.events({
               alert("Author Name must be filled out");
               return false;
             } 
-        var delta_obj = document.getElementsByClassName("editorquill")[0].innerHTML;
-        if (delta_obj == "") {
+        var blog_description = document.getElementsByClassName("editorquill")[0].innerHTML;
+        if (blog_description == "") {
               alert("Description must be filled out");
               return false;
             }
@@ -56,29 +56,17 @@ Template.blogform.events({
         var full_id = `blog_id_${random_number}`;
 
         $('#form')[0].reset();
-
-  		   Blog.insert({
-  		   	blog_id : full_id,
-  		   	created_at:current_date,
-  		    blog_name: blog_name ,
-  		    blog_type:blog_type,
-  		    blog_author_name:auther_name,
-          blog_description:delta_obj,
-  		    cover_image:cover_image,
-  		    mark_by_admin:mark_by_admin
-  		    });
-
-          FlowRouter.go('/blog_name');
-
         // var myId = Blog[0]._id;
            
-       // Meteor.call("insert_blog",blogName,blogType,authName,comment,image,isAdmin, function(error,result){
-       // 	if(error){
-       // 		alert("Some error occured");
-       // 	}else{
-       // 		alert("Successfully inserted.");
-       // 	}
-       // });     
+       Meteor.call("insert_blog",full_id,current_date,blog_name,blog_type,auther_name,blog_description,cover_image,mark_by_admin, function(error,result)
+       {
+       	if(error){
+       		alert("Some error occured");
+       	}else{
+       		alert("Successfully inserted.");
+       	}
+       }); 
+       FlowRouter.go('/blog_name');    
 	},
 
 });

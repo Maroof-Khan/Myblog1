@@ -22,31 +22,36 @@ Template.layouts.events({
 		 event.preventDefault();
          var create_id = this._id;
          location.href = `updateform?ID=${create_id}`;
-		}
-	});
+		},
 
-Template.layouts.events({
-	'click .show_details':function(event,instance){
+     'click .show_details':function(event,instance){
 		 event.preventDefault();
          var create_id = this._id;
          location.href = `blogdetails?ID=${create_id}`;
-		}
-	});
+		},
 
-Template.layouts.events({
-	'click .create_class':function(event,instance){
+	 'click .create_class':function(event,instance){
 		 event.preventDefault();
 		 FlowRouter.go('/blog_form');
-		}
-	});
-
-Template.layouts.events({
-	'click .delete_class':function(event,instance){
+		},
+     
+     'click .delete_class':function(event,instance){
 		 event.preventDefault();
 		 var delete_id = this._id;
 		 var conf = confirm("Do you want to delete this blog ?? It will remove your all details from database!! ");
 		 if(conf){
-		 	 Blog.remove(delete_id);
+
+		 	  // Blog.remove(delete_id);
+
+		 	   Meteor.call("delete_blog",delete_id, function(error,result)
+		       {
+		       	if(error){
+		       		alert("Some error occured");
+		       	}else{
+		       		alert("Successfully deleted.");
+		       	}
+		       }); 
 		 }
 		}
+
 	});

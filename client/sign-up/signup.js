@@ -7,13 +7,6 @@ import {UserDetail} from './../../import/collections/insert.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
-Template.sign_up.events({
-	'click .for_login':function(event,instance){
-       // alert('hiiiiii');
-        event.preventDefault();
-       FlowRouter.go('sign_in');
-	}
-});
 
 Template.sign_up.events({
 	'click .user_detail':function(event,instance){
@@ -42,13 +35,23 @@ Template.sign_up.events({
 
         $('#form')[0].reset();
 
-  		   UserDetail.insert({
-  		   	user_name : user_name,
-  		   	user_email:user_email,
-  		    user_password: user_password,
-  		    user_id: user_id,
-  		    created_at:current_date
-  		    });
+        Meteor.call("insert_userdetail",user_name,user_email,user_password,user_id,current_date, function(error,result)
+       {
+        if(error){
+          alert("Some error occured");
+        }else{
+          alert("Successfully register.");
           FlowRouter.go('/blog_name');
-	}
+        }
+       }); 
+
+          // FlowRouter.go('/blog_name');
+	},
+
+
+  'click .for_login':function(event,instance){
+       // alert('hiiiiii');
+        event.preventDefault();
+       FlowRouter.go('sign_in');
+  }
 });

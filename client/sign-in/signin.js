@@ -3,17 +3,10 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 
 import {UserDetail} from './../../import/collections/insert.js';
-
+// import './../bootstrap-link/bootstrap-link.html';
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-
-Template.sign_in.events({
-	'click .for_signup':function(event,instance){
-       // alert('signin');
-       FlowRouter.go('/');
-	}
-});
 
 Template.sign_in.events({
 	'click .for_signin':function(event,instance){
@@ -31,7 +24,6 @@ Template.sign_in.events({
             }
        
         var User_Detail = UserDetail.find({"user_email":user_email,"user_password":user_password}).fetch();
-        console.log("User_Detail :",User_Detail);
         if(User_Detail.length){
         	if(user_email == User_Detail[0].user_email && user_password == User_Detail[0].user_password){
         	   alert('email and password matches');
@@ -49,5 +41,12 @@ Template.sign_in.events({
         	alert('Your email or password is not correct');
         }
         
-	}
+	},
+
+
+  'click .for_signup':function(event,instance){
+       // alert('signin');
+       FlowRouter.go('/');
+    }
+
 });
