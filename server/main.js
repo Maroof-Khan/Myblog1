@@ -24,15 +24,6 @@ Meteor.methods({
   		    return false;
   },
   
-
-  // fetchblog_details(blog_id)
-  //   {
-  //     console.log("fetchblog_details");
-  //      var blog_node = Blog.find({"_id": blog_id}).fetch();
-  //      // console.log(blog_node);
-  //      return blog_node;
-  //   },
-
    delete_blog(delete_id)
     {
       Blog.remove(delete_id);

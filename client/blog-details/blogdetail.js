@@ -12,20 +12,7 @@ Template.blogdetails.helpers({
              }
             var blog_id  = $.urlParam('ID');
 
-        //    Meteor.call("fetchblog_details",blog_id,function(error,result)
-	       // {
-	       // 	if(error){
-	       // 		alert("Some error occured");
-	       // 	}else{
-	       // 		// alert("Successfully inserted.");
-	       // 		 console.log("blogdetails ::", result);
-	       // 		   return result;
-	       // 	}
-	       // }); 
-           // console.log("det ::",det);
-            //var blog_node =
-            return Blog.find({"_id": blog_id}).fetch();
-           
+            return Blog.find({"_id": blog_id}).fetch();          
 
   }
 })

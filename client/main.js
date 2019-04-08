@@ -4,6 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import {Blog} from './../import/collections/insert.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+// import Quill from 'quill';
+// import PlainClipboard from './PlainClipboard';
+
 
 Template.blogform.events({
 	'click #submit_blog_data':function(event,instance){
@@ -31,11 +34,14 @@ Template.blogform.events({
               alert("Description must be filled out");
               return false;
             }
-        var cover_image =  $('#cover_image').val();
+        var cover_image1 =  $('#fileName').val();
+        var cover_image = cover_image1.replace("C:\\fakepath\\", "");
+          //console.log("cover_image",cover_image);
          if (cover_image == "") {
               alert("File must be upload");
               return false;
             }
+
         $('INPUT[type="file"]').change(function () {
           var ext = this.value.match(/\.(.+)$/)[1];
           switch (ext) {
@@ -64,9 +70,10 @@ Template.blogform.events({
        		alert("Some error occured");
        	}else{
        		alert("Successfully inserted.");
+           FlowRouter.go('/blog_name');
        	}
        }); 
-       FlowRouter.go('/blog_name');    
+       // FlowRouter.go('/blog_name');    
 	},
 
 });
@@ -74,8 +81,9 @@ Template.blogform.events({
 
 // Template.blogform.onRendered(function(){
 //       // alert('hiiiiiiiiii');
-    // },300)
-
+//   Meteor.setTimeout(function() {
+        
+//   },350)
 // })
 
 
