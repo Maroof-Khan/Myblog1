@@ -104,7 +104,14 @@ Template.updateform.onRendered(function(){
                           });
                           $(".ql-tooltip").remove();      
                           $(".ql-hidden").remove();      
-                          $(".ql-clipboard").remove();    
+                          //$(".ql-clipboard").remove(); 
+
+        editor.clipboard.addMatcher (Node.ELEMENT_NODE, function (node, delta) {
+              var plaintext = node.innerText;
+              var Delta = Quill.import('delta');
+              return new Delta().insert(plaintext);
+          });
+
           });
       });
 

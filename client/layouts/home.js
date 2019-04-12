@@ -11,7 +11,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 Template.layouts.helpers({
 		log(){
-             var blog_node = Blog.find().fetch();
+             var blog_node = Blog.find({},{sort :{created_at : -1}}).fetch();
          	 return blog_node;
 		}
 	 });

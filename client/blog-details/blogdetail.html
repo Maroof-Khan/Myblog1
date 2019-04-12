@@ -1,54 +1,58 @@
 <template name="blogdetails" >
+   <head>
+      <link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <div class=" container" >
+      <div class="row">
+         <div class="col-sm-12 h2">
+            Blog Details
+         </div>
 
-<head>
-  <link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-  
-<div class=" container" >
-  	<div class="row">
-  		<div class="col-sm-12 h2">
-  			Blog Details
-  		</div>  		 
-  	</div>
+         <div class="ql-editor" contenteditable="true"><p>Type Something........click on image for resizing</p><p>'m not s<span class="hl">ure the docs for enable</span>/disable are in the right place.</p><p>It will be nice to be able to link to a specific method in the docs.</p></div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
 
-  	<div class="row people_list">
-		 {{#each show_detail}}
-		 
-		 <div class="col-sm-12 show_details" >
-		 	<p class="brender h1">Blog Name : {{blog_name}}</p>
-		 </div>
-
-		 <div class="col-sm-12 show_details" >
-		 	<p class="brender h1">Blog Type : {{blog_type}}</p>
-		 </div>
-
-		 <div class="col-sm-12 show_details" >
-		 	<p class="brender h1">Blog Author Name : {{blog_author_name}}</p>
-		 </div>
-
-		 <div class="col-sm-12 " >
-		 	<div class="brender ">
-		 	   <h1> Blog Description :</h1> {{{blog_description}}}
-		    </div>
-		 </div>
-
-		 <div class="col-sm-12 show_details" >
-		 	<p class="brender h1">Mark By Admin : </p>
-		 	 {{#if mark_by_admin}}
-		 	 <div class="if_block"><h1 >{{mark_by_admin}}</h1></div>
-             {{else }}
-             <div class="else_block"><h1>false</h1></div>
-             {{/if}}
-		 </div>
-
-		 <div class="col-sm-12 show_details" >
-		 	<p class="brender h1">Created At : {{created_at}}</p>
-		 </div>
-
-		 {{/each}}
-    </div>
-
-</div>
-
+      </div>
+      <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+      <div class="row people_list">
+         {{#each show_detail}}
+         <div class="col-sm-12 show_details" >
+            <!-- <p>SELECT TO HEIGHLIGHT HHH HHHHH HHHH HH</p> -->
+            <p class="brender h1">Blog Name : {{blog_name}}</p>
+         </div>
+         <div class="col-sm-12 show_details" >
+            <p class="brender h1">Blog Type : {{blog_type}}</p>
+         </div>
+         <div class="col-sm-12 show_details" >
+            <p class="brender h1">Blog Author Name : {{blog_author_name}}</p>
+         </div>
+         <div class="col-sm-12 " >
+            <div class="brender " >
+               <h1> Blog Description :</h1>
+               <p class="blog-description"> {{{blog_description}}} </p>
+            </div>
+         </div>
+         <div class="col-sm-12 show_details" >
+            <p class="brender h1">Mark By Admin : </p>
+            {{#if mark_by_admin}}
+            <div class="if_block">
+               <h1 >{{mark_by_admin}}</h1>
+            </div>
+            {{else }}
+            <div class="else_block">
+               <h1>false</h1>
+            </div>
+            {{/if}}
+         </div>
+         <div class="col-sm-12 show_details" >
+            <p class="brender h1">Created At : {{created_at}}</p>
+         </div>
+         {{/each}}
+         
+      </div><br>
+        <div class="col-sm-12 ">
+        	<button  class="btn btn-info save_highlited_text" style="cursor: pointer;">
+        	SAVE HEIGHLITED TEXT</button>
+        </div>
+      
+   </div>
 </template>

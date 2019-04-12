@@ -1,0 +1,40 @@
+<template name="previewblog">
+	<link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./../bootstrap/js/bootstrap.min.js" ></script>
+    <div class="container">
+    	<div class="row">
+
+    		<div class="col-sm-12 container" style="background-color: #f4f4f4">
+              {{#each show_preview}}  
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="/{{cover_image}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                       <div class="col-md-12">{{auther_name}} Author</div> 
+                       <div class="col-md-12">{{current_date}}</div> 
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="card-body">
+                        <p class="card-text" style="color: blue">{{blog_name}}</p>
+                        <p class="card-text"><small class="text-muted">{{{blog_description}}}</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="col-sm-6"></div>
+    		<div class="col-sm-3">
+              <button id="edit_blog" type="button" class="btn btn-light" style="cursor: pointer;" >Edit blog</button>
+            </div>
+        
+	        <div class="col-sm-3">
+	          <button type="button" id="submit_blog" class="btn btn-info" style="cursor: pointer;">Submit</button>
+	        </div>
+
+    	</div>	
+    </div>
+</template>

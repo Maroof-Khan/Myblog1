@@ -1,0 +1,48 @@
+<template name="blogdraft">
+   <link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="./../bootstrap/js/bootstrap.min.js" ></script>
+    <div class="container">
+    	<div class="row">
+    		<!-- <p>{{show_draft}}</p> -->
+    		<div class="col-sm-4 container" style="background-color: #f4f4f4">
+                
+    			<div class="col-sm-12 b">Blog</div><br>
+
+    			<div class="col-sm-12">
+                <button type="button" id="create_blog" class="btn btn-secondary" style="cursor: pointer; width: 100%">Create Blog
+                </button>
+                </div><br>
+
+                <div class="col-sm-12">
+                <a  class=" btn-secondary h3" style="cursor: pointer;">All(0)
+                </a>
+                </div><br>
+
+                <div class="col-sm-12">
+                <a  class=" btn-secondary h3" style="cursor: pointer;">Draft(2)
+                </a>
+                </div>
+               
+
+    		</div>
+
+            <div class="col-sm-1"></div>
+
+    		<div class="col-sm-7 container" style="background-color: #f4f4f4">
+    			<div class="col-sm-12">
+                <a  class=" btn-secondary h3" style="cursor: pointer;">All Blogs(0)
+                </a>
+                </div>
+                {{#each show_draft}}
+                <div class="col-sm-12">
+                <h3>{{blog_name}}</h3>
+                </div>
+                <div class="col-sm-12">
+                <h3>{{created_at}}</h3>
+                </div>
+                {{/each}}
+    		</div>
+
+    	</div>
+    </div>		
+</template>

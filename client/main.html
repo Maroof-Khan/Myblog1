@@ -38,7 +38,7 @@
 
     <div class="form-group col-sm-12">
       <label for="comment">Discription</label>
-      <div id="form_editor" class="editorquill" style="height:300px;">
+      <div id="form_editor" class="editorquill" contenteditable="false" style="height:300px;">
        <p>Type Something........click on image for resizing</p>
       </div>
     </div> 
@@ -60,51 +60,74 @@
     </div>
      
     <div class="form-group">
-      <div class="col-sm-12">
-        <button id="submit_blog_data" class="btn btn-primary">Submit</button>
+      <div class="container row">
+      <div class="col-sm-6"></div>  
+        <div class="col-sm-2">
+          <button type="button" id="cancel" class="btn btn-secondary" style="cursor: pointer;">Cancel</button>
+        </div>
+
+        <div class="col-sm-2">
+          <button id="savein_draft_blog" type="button" class="btn btn-light" style="cursor: pointer;" >Save in Drafts</button>
+        </div>
+        
+        <div class="col-sm-2">
+          <button type="button" id="preview_blog" class="btn btn-info" style="cursor: pointer;">Preview to Publish</button>
+        </div>
       </div>
     </div>
   </form>
-
-  <script type="text/javascript">
-   Meteor.setTimeout(function() {
-    var toolbarOptions = [
-                              ['bold', 'italic', 'underline', 'strike'],        
-                              ['blockquote', 'code-block'],    
-                              [{ 'direction': 'rtl' }],                         
-                              ['link', 'image'],
-                              ['clean']                                         
-                            ];
-       $(document).ready(function(){
-          $.getScript('http://127.0.0.1:3000/quill/image-resize.min.js',
-            function(){
-            var editor = new Quill('#form_editor' , {
-                            modules: {
-                                   toolbar: toolbarOptions,
-                                   imageResize: {
-                                                  displaySize: true
-                                                 }
-                                },
-                           theme: 'snow'
-                          });
-
-                          $(".ql-tooltip").remove();      
-                          $(".ql-hidden").remove();      
-                         // $(".ql-clipboard").remove(); 
+    <script type="text/javascript">
 
 
-         editor.clipboard.addMatcher (Node.ELEMENT_NODE, function (node, delta) {
-              var plaintext = node.innerText;
-              var Delta = Quill.import('delta');
-              return new Delta().insert(plaintext);
+      //LOAD QUILL EDITOR
+      Meteor.setTimeout(function() {
+        var toolbarOptions = [
+                                  ['bold', 'italic', 'underline', 'strike'],        
+                                  ['blockquote', 'code-block'],    
+                                  [{ 'direction': 'rtl' }],                         
+                                  ['link', 'image'],
+                                  ['clean']                                         
+                                ];
+
+           //LOAD IMAGE RESIZE MODULE                     
+           $(document).ready(function(){
+              $.getScript('http://127.0.0.1:3000/quill/image-resize.min.js',
+                function(){
+                var editor = new Quill('#form_editor' , {
+                                modules: {
+                                       toolbar: toolbarOptions,
+                                       imageResize: {
+                                                      displaySize: true
+                                                     }
+                                    },
+                               theme: 'snow'
+                              });
+
+                              $(".ql-tooltip").remove();      
+                              $(".ql-hidden").remove();   
+                               // editor.enable(false);   
+                             // $(".ql-clipboard").remove(); 
+
+              //LOAD FORMAT REMOVING MODULE
+             editor.clipboard.addMatcher (Node.ELEMENT_NODE, function (node, delta) {
+                  var plaintext = node.innerText;
+                  var Delta = Quill.import('delta');
+                  return new Delta().insert(plaintext);
+              });
+
+              });
+
+            //GET OBSERVABLE DATA
+            // var text =editor.getText( 0, 50); 
+            // console.log("editor text ::",text);
+
           });
 
-          });
-      });
+           
 
-    },300);
-  </script>
-
+        },300);
+    </script>
+     
 </template>
 
 
