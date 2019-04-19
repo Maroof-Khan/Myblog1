@@ -3,14 +3,12 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 
 import {UserDetail} from './../../import/collections/insert.js';
-// import './../bootstrap-link/bootstrap-link.html';
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 Template.sign_in.events({
 	'click .for_signin':function(event,instance){
-        // alert('signin');
         event.preventDefault();
         var user_email = $("#user_email").val(); 
          if (user_email == "") {
@@ -45,8 +43,8 @@ Template.sign_in.events({
 
 
   'click .for_signup':function(event,instance){
-       // alert('signin');
        FlowRouter.go('/');
     }
 
 });
+

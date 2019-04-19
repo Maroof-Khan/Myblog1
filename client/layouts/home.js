@@ -14,7 +14,7 @@ Template.layouts.helpers({
              var blog_node = Blog.find({},{sort :{created_at : -1}}).fetch();
          	 return blog_node;
 		}
-	 });
+});
 
 
 Template.layouts.events({
@@ -40,9 +40,6 @@ Template.layouts.events({
 		 var delete_id = this._id;
 		 var conf = confirm("Do you want to delete this blog ?? It will remove your all details from database!! ");
 		 if(conf){
-
-		 	  // Blog.remove(delete_id);
-
 		 	   Meteor.call("delete_blog",delete_id, function(error,result)
 		       {
 		       	if(error){
@@ -54,4 +51,4 @@ Template.layouts.events({
 		 }
 		}
 
-	});
+});

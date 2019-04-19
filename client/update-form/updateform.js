@@ -75,13 +75,11 @@ Template.updateform.helpers({
             var blog_id  = $.urlParam('ID');
             var blog_node = Blog.find({"_id": blog_id}).fetch();
             return blog_node;
-
   }
 })
 
 
 Template.updateform.onRendered(function(){
-  // alert('hiiii');
   Meteor.setTimeout(function() {
          var toolbarOptions = [
                               ['bold', 'italic', 'underline', 'strike'],        
@@ -104,8 +102,7 @@ Template.updateform.onRendered(function(){
                           });
                           $(".ql-tooltip").remove();      
                           $(".ql-hidden").remove();      
-                          //$(".ql-clipboard").remove(); 
-
+         // FOR REMOVING TEXT FORMET WHEN COPY AND PASTE                 
         editor.clipboard.addMatcher (Node.ELEMENT_NODE, function (node, delta) {
               var plaintext = node.innerText;
               var Delta = Quill.import('delta');

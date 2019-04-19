@@ -19,7 +19,6 @@ Template.blogdraft.helpers({
 
 Template.blogdraft.events({
 	'click #create_blog' : function(events,instance){
-		 // alert('hii');
 		 FlowRouter.go('/blog_form')
 	}
 })

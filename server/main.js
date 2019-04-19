@@ -10,9 +10,7 @@ Meteor.methods({
   insert_blog(full_id,current_date,blog_name,blog_type,
         auther_name,blog_description,cover_image,mark_by_admin,savein_draft=false)
   {
-        // console.log('blog_name');
         // console.log("savein_draft",savein_draft);
-
           Blog.insert({
            blog_id : full_id,
            created_at:current_date,
@@ -24,7 +22,6 @@ Meteor.methods({
            cover_image:cover_image,
            mark_by_admin:mark_by_admin
           });
-
   		    return false;
   },
 
@@ -70,8 +67,14 @@ Meteor.methods({
        return false;
     },
 
-    update_heighlited_description(blog_id,blogdesc){
+    save_heighlited_description(blog_id,blogdesc){
       Blog.update({"_id":blog_id},{$set:{"blog_description":blogdesc}});
       return false;
+    },
+
+    add_columnfor_heighlited_description(blog_id,highlighted_text_array){
+      console.log("highlighted_text_array11  ::",highlighted_text_array);
+      // Blog.update({"_id":blog_id},
+      //   {$set:{"highlight_text_array":highlighted_text_array}},{multi:true});
     }
 });

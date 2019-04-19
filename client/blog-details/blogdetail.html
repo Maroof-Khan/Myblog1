@@ -8,15 +8,11 @@
          <div class="col-sm-12 h2">
             Blog Details
          </div>
-
-         <div class="ql-editor" contenteditable="true"><p>Type Something........click on image for resizing</p><p>'m not s<span class="hl">ure the docs for enable</span>/disable are in the right place.</p><p>It will be nice to be able to link to a specific method in the docs.</p></div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
-
       </div>
       <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
       <div class="row people_list">
          {{#each show_detail}}
          <div class="col-sm-12 show_details" >
-            <!-- <p>SELECT TO HEIGHLIGHT HHH HHHHH HHHH HH</p> -->
             <p class="brender h1">Blog Name : {{blog_name}}</p>
          </div>
          <div class="col-sm-12 show_details" >
@@ -49,10 +45,16 @@
          {{/each}}
          
       </div><br>
-        <div class="col-sm-12 ">
+      <div class="row">
+        <!-- <div class="col-sm-5">
+        	<button  class="btn btn-info highlited_text" style="cursor: pointer;">
+        	HEIGHLITE TEXT PARMANENT</button>
+        </div> -->
+        <div class="col-sm-6">
         	<button  class="btn btn-info save_highlited_text" style="cursor: pointer;">
         	SAVE HEIGHLITED TEXT</button>
         </div>
-      
+        <div class="col-sm-6"></div>
+     </div>
    </div>
 </template>

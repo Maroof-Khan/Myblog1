@@ -16,17 +16,22 @@ Template.blogdetails.helpers({
 });
 
 var blog_desc = "";
+var highlighted_text_array =[];
 function highlightElements(e){
 	 	var parent = $(e.target).parents('.blog-description');           
 	 	if(parent.length > 0) {
 	 		highlightText(e.target);	
 	 	}
-         console.log("highlightText  ::",parent[0].innerHTML);
+
+         console.log("htmlObject ::", parent[0].innerHTML);
          blog_desc = parent[0].innerHTML;
 };
 
 function highlightText(element){
 		var selection = getSelectedText(); 
+		highlighted_text_array.push(selection);
+		console.log("highlight_text array  ::",highlighted_text_array);
+		// console.log("highlightText highlightText ::",selection);
         highlightSpecificElement(element,[selection]);
 };
 
@@ -57,10 +62,23 @@ function getSelectedText(){
 	    } 
 };
 
-function saveBlog(){
+function highlightBlog(){
 	   var blog_id  = $.urlParam('ID');
 	   var blogdesc = blog_desc;
-	   Meteor.call("update_heighlited_description",blog_id,blogdesc, function(error,result)
+	   Meteor.call("save_heighlited_description",blog_id,blogdesc, function(error,result)
+	   {
+		    if(error){
+		      alert("Some error occured");
+		    }else{
+		      alert("Successfully save highlight text.");
+		    }
+	    })
+};
+
+function saveHighlightedBlog(){
+	   var blog_id  = $.urlParam('ID');
+	   var highlighted_text_array = highlighted_text_array;
+	   Meteor.call("add_columnfor_heighlited_description",blog_id,highlighted_text_array, function(error,result)
 	   {
 		    if(error){
 		      alert("Some error occured");
@@ -76,10 +94,22 @@ Template.blogdetails.events({
       highlightElements(event);
  },
 
-   'click .save_highlited_text':function(event,instance){
+   'click .highlited_text':function(event,instance){
        event.preventDefault();
-       saveBlog(); 
-       
-	}
+       var sure = confirm("Are you sure you want to highlight text ?");
+       if(sure){
+         // highlightBlog();
+       }     
+	},
+
+  'click .save_highlited_text':function(event,instance){
+  	   event.preventDefault();
+       var sure = confirm("Are you sure you want to save highlightedtext ?");
+       if(sure){
+       	 // highlightBlog();
+         saveHighlightedBlog();
+       } 
+  }
+
 });
 

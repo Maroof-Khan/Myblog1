@@ -1,0 +1,39 @@
+@import "compass/css3";
+
+// HIGHLIGHT ELEMENT STYLES
+body.highlight-is-active {
+  pointer-events:  none;
+}
+
+.highlight {
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
+  position: relative;
+  z-index: 9999;
+  pointer-events:  auto;
+  transition: all 0.5s ease;
+}
+
+// OTHER
+body{
+  max-width:90%;
+  margin: 0 auto;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%);
+}
+
+.btn-group{
+  margin: 10px 0;
+}
+
+.row > * {
+  margin-bottom: 10px;
+}
+
+.image{
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.list-group{
+  border-radius: 4px;
+}

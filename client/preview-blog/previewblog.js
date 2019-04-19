@@ -16,7 +16,6 @@ Template.previewblog.helpers({
 
 Template.previewblog.events({
 	'click #edit_blog' : function(){
-        // alert("edit_blog");
         FlowRouter.go('/blog_form')
 	},
 
