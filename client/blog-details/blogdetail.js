@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 import {Blog} from './../../import/collections/insert.js';
 
+//Blog Details
 Template.blogdetails.helpers({
   show_detail(){
               var details = [];
