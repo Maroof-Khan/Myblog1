@@ -1,4 +1,4 @@
-<template name="blogdetails" >
+<!-- <template name="blogdetails" >
    <head>
       <link type="text/css" href="./../bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,10 +46,10 @@
          
       </div><br>
       <div class="row">
-        <!-- <div class="col-sm-5">
+        <div class="col-sm-5">
         	<button  class="btn btn-info highlited_text" style="cursor: pointer;">
         	HEIGHLITE TEXT PARMANENT</button>
-        </div> -->
+        </div>
         <div class="col-sm-6">
         	<button  class="btn btn-info save_highlited_text" style="cursor: pointer;">
         	SAVE HEIGHLITED TEXT</button>
@@ -57,4 +57,53 @@
         <div class="col-sm-6"></div>
      </div>
    </div>
-</template>
+</template> -->
+
+<div class="row ">
+ <div class="col-md-6">
+  <form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+  <label for="title">Title</label>
+  <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+  <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+   Title is Required  
+  </div>
+  </div>
+  <div class="form-group">
+  <label for="price">Price</label>
+  <div class="input-group mb-3">
+    <span class="input-group-text">$</span> 
+    <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
+    <span class="input-group-text">.00</span>
+    </div> 
+    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+     <div *ngIf="price.errors.required">Price is required</div>
+     <div *ngIf="price.errors.min">Price should be 0 or higher</div>
+     
+    </div>
+    </div>
+  <div class="form-group">
+  <label for="category">Category </label>
+  <select  #cat="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+  <option value="">Select One</option>
+  <option value="value1">Value1</option>
+  <option value="value2">Value2</option>
+  <option value="value3">Value3</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
+    Category is required
+  </div>
+  </div>
+  <div class="form-group">
+  <label for="imageUrl">Image Url</label>
+  <input #iurl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+  <div class="alert alert-danger" *ngIf="iurl.touched && iurl.invalid">
+  <div *ngIf="iurl.errors.required">ImageUrl is required</div>
+  <div *ngIf="iurl.errors.url">Inter valid Image Url</div>  
+  </div>
+  </div>
+  <button class="btn btn-primary">Save</button>
+  <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+ </form>  
+ </div>
+</div>
